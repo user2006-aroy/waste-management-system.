@@ -1,0 +1,2 @@
+{% extends 'portal/base.html' %}{% block title %}Complaint Submitted{% endblock %}{% block content %}
+<div class="success-card"><div class="success-check">✓</div><h1>Thank you for reporting!</h1><p>Your complaint has been recorded. Keep this ticket ID to track its progress.</p><div class="ticket">{{ complaint.ticket_id }}</div><p><b>{{ complaint.category }}</b> · {{ complaint.area|default:complaint.address }}</p><a class="btn btn-primary" href="{% url 'track' %}">Track complaint →</a> <a class="text-link" href="{% url 'home' %}">Back to home</a></div>{% endblock %}

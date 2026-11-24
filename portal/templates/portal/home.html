@@ -1,0 +1,22 @@
+{% extends 'portal/base.html' %}{% block title %}Home | Waste Management System{% endblock %}{% block content %}
+<section class="hero">
+ <div class="hero-copy"><span class="eyebrow">CLEAN CITY INITIATIVE</span><h1><em>Waste</em> Management System</h1><h2>“A Cleaner City, A Healthier You”</h2><p>Report waste issues, track complaints and contribute towards a cleaner and greener environment.</p><a class="btn btn-light" href="{% url 'report' %}">⚑ &nbsp; Report a Waste Issue <b>›</b></a></div>
+ <div class="hero-art" aria-label="Illustration of a clean green city"><div class="sun"></div><div class="skyline">▥　▥　▥　▥　▥　▥</div><div class="trees">🌳　🌲　🌳　🌲　🌳</div><div class="worker">🧑🏽‍🔧</div><div class="bins"><span>♻</span><span>♻</span><span>♻</span></div><div class="slogan">Reduce<br>Reuse<br>Recycle</div></div>
+</section>
+<section class="stats-grid">
+ <article class="stat"><span class="stat-icon dark">▤</span><div><strong>{{ stats.total|default:"0" }}</strong><small>Total Complaints</small></div></article>
+ <article class="stat"><span class="stat-icon blue">◷</span><div><strong>{{ stats.progress|default:"0" }}</strong><small>In Progress</small></div></article>
+ <article class="stat"><span class="stat-icon green">✓</span><div><strong>{{ stats.resolved|default:"0" }}</strong><small>Resolved</small></div></article>
+ <article class="stat"><span class="stat-icon orange">!</span><div><strong>{{ stats.pending|default:"0" }}</strong><small>Pending</small></div></article>
+</section>
+<div class="section-heading"><span></span><h2>Our Services</h2><span></span></div>
+<section class="services-grid">
+ <article class="service-card mint"><div class="service-icon">📝</div><h3>Report Waste Issue</h3><p>Quickly report any waste-related problem.</p><a class="pill-btn" href="{% url 'report' %}">Get Started →</a></article>
+ <article class="service-card sky"><div class="service-icon">🔎</div><h3>Track Your Complaint</h3><p>Check the status of your complaint.</p><a class="pill-btn" href="{% url 'track' %}">Track Now →</a></article>
+ <article class="service-card mint"><div class="service-icon">📗</div><h3>Waste Awareness</h3><p>Learn how to manage waste responsibly.</p><a class="pill-btn" href="{% url 'awareness' %}">Learn More →</a></article>
+ <article class="service-card sky"><div class="service-icon">📍</div><h3>View Hotspots</h3><p>Explore waste management reports by area.</p><a class="pill-btn" href="{% url 'reports' %}">View Areas →</a></article>
+ <article class="service-card sky"><div class="service-icon">📊</div><h3>View Reports</h3><p>Explore waste management statistics.</p><a class="pill-btn" href="{% url 'reports' %}">View Reports →</a></article>
+</section>
+{% if recent %}<section class="recent-panel"><div class="panel-head"><h2>Recent complaints</h2><a href="{% url 'track' %}">Track a complaint →</a></div><div class="table-wrap"><table><thead><tr><th>Ticket ID</th><th>Issue</th><th>Area</th><th>Status</th></tr></thead><tbody>{% for item in recent %}<tr><td>{{ item.ticket_id }}</td><td>{{ item.category }}</td><td>{{ item.area|default:"—" }}</td><td><span class="status {{ item.status|slugify }}">{{ item.status }}</span></td></tr>{% endfor %}</tbody></table></div></section>{% endif %}
+<aside class="eco-tip"><span>🌱 ECO TIP</span><b>Segregate waste at source — keep your city clean!</b><small>Wet waste • Dry waste • Domestic hazardous waste</small></aside>
+{% endblock %}
