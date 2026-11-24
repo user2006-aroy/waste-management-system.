@@ -3,7 +3,12 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-change-this-before-production"
 DEBUG = True
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = [
+    'waste-management-system-yn9j-6df1ndv4j-vipasana.vercel.app',
+    'waste-management-system-yn9j.vercel.app',
+    'localhost',
+    '127.0.0.1',
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin", "django.contrib.auth", "django.contrib.contenttypes",
